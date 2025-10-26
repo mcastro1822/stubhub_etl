@@ -3,18 +3,22 @@ requires = ["setuptools"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "template"
+name = "stubhub"
 dynamic = ["version"]
 description = ""
 readme = "README.md"
 requires-python = ">=3.11"
 # Don't need dependencies, those should be installed in the container
 # and are managed by pipenv
-dependencies = []
+dependencies = [
+    "prefecto>=1.1.1",
+    "pydantic-mongo>=3.1.0",
+    "pymongo>=4.15.3",
+]
 license.file = "LICENSE"
 
 [project.scripts]
-template = "template.cli:cli"
+stubhub = "stubhub.cli:cli"
 
 [tool.interrogate]
 exclude = ["tests/"]
