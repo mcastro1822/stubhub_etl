@@ -23,7 +23,7 @@ def AbstractRepo(model: U, model_set: T, collection: str):
         class Meta:
             collection_name: str = collection
 
-        def get_all(self) -> list[T]:
+        def get_all(self) -> list[U]:
             """
             Grabs all Items in the MongoDB collection
             """
