@@ -1,17 +1,11 @@
 """
 authored by Yegor Bryzhan @ybryzTE
+Edits made by Michael Castro
 """
 
 from prefect.blocks.core import Block
-from pydantic.version import VERSION as PYDANTIC_VERSION
+from pydantic import SecretStr, model_validator
 from pymongo import MongoClient
-
-HAS_PYDANTIC_V2 = PYDANTIC_VERSION.startswith("2.")
-
-if HAS_PYDANTIC_V2:
-    from pydantic.v1 import SecretStr, root_validator
-else:
-    from pydantic import SecretStr, root_validator
 
 
 class MongoDB(Block):
@@ -25,7 +19,7 @@ class MongoDB(Block):
 
     _block_type_name = "MongoDB"
 
-    @root_validator
+    @model_validator(mode="before")
     def validate_input(cls, values):
         """
         Verifies that a username and password are provided

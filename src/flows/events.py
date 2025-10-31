@@ -1,3 +1,8 @@
+"""
+Collects events table
+
+"""
+
 import anyio
 from prefect import flow
 
@@ -7,9 +12,9 @@ from stubhub.models import Query, StubhubRepo
 
 
 @flow
-async def orchestrator():
+async def events_orchestrator():
     """
-    Manages excution of stubhub scrape
+    Manages excution of stubhub events
     """
 
     repo: StubhubRepo = StubhubRepo((blocks.mongodb).get_client()["production"])

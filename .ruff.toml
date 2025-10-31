@@ -12,3 +12,6 @@ ignore = ["E501"]
 
 # Allow wild imports in conftest
 "tests/conftest.py" = ["F405", "E402", "F403"]
+
+# Allow src/ to be added to sys.path in local scripts
+"main.py" = ["E402"]
