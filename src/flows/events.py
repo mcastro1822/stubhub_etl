@@ -16,7 +16,7 @@ from stubhub.object_store.pathing import staging_path
 from stubhub.transform.stage import json_to_df
 
 
-@flow(name="List Events - {stubhub_name}", description="Lists Future Events")
+@flow(flow_run_name="List Events - {stubhub_name}", description="Lists Future Events")
 async def list_events(stubhub_name: str, stubhub_id: int):
     """
     Lists upcoming events by name and id
