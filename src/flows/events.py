@@ -6,9 +6,9 @@ Collects events table
 import anyio
 from prefect import flow
 
+from stubhub.api.extract import list_events
 from stubhub.blocks import blocks
-from stubhub.extract import list_events
-from stubhub.models import Query, StubhubRepo
+from stubhub.mongodb.models import Query, StubhubRepo
 
 
 @flow

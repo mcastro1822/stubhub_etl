@@ -5,7 +5,7 @@ Creates MongoDB Document Models
 from pydantic import BaseModel, Field, RootModel
 from pydantic_mongo import ObjectIdAnnotation
 
-from stubhub.db import AbstractRepo
+from stubhub.mongodb.db import AbstractRepo
 
 
 class Query(BaseModel):

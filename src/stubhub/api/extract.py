@@ -6,12 +6,12 @@ import httpx
 from fake_useragent import UserAgent
 from prefect import flow, task
 
-from stubhub.task_handler import TaskManager
+from stubhub.api.task_handler import TaskManager
 
 client: httpx.AsyncClient = httpx.AsyncClient()
 
 
-@task(task_run_name="s", retries=3)
+@task(task_run_name="Query Index {pageIndex}", retries=3)
 async def query_events(stubhub_name: str, stubhub_id: int, pageIndex: int = 0) -> dict:
     """
     Queries event based on PageIndex
@@ -33,7 +33,7 @@ async def query_events(stubhub_name: str, stubhub_id: int, pageIndex: int = 0) -
     return r.json()
 
 
-@flow
+@flow(name="List Events - {stubhub_name}", description="Lists Future Events")
 async def list_events(stubhub_name: str, stubhub_id: int):
     """
     Lists upcoming events
