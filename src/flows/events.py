@@ -60,6 +60,3 @@ async def events_orchestrator():
             tg.start_soon(
                 list_events, event_config.stubhub_name, event_config.stubhub_id
             )
-
-
-anyio.run(list_events, "brit-floyd-tickets", 700021)
